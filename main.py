@@ -6,15 +6,39 @@ GB = 1024 * MB
 
 
 def get_stats():
+    cpu_freq = psutil.cpu_freq()
+    cpu_freq = {
+        'current': cpu_freq.current,
+        'max': -1,
+        'units': 'MHz'
+    }
+
     cpu_load = psutil.cpu_percent()
-    cpu_freq = psutil.cpu_freq().current
-    mem_available = psutil.virtual_memory().available / MB
-    disk_available = psutil.disk_usage('/').free / GB
+    cpu_load = {
+        'current': cpu_load,
+        'max': 100,
+        'units': '%'
+    }
+
+    memory = psutil.virtual_memory()
+    memory = {
+        'current': (memory.total - memory.available) / MB,
+        'max': memory.total / MB,
+        'units': 'MB'
+    }
+
+    disk = psutil.disk_usage('/')
+    disk = {
+        'current': disk.used / GB,
+        'max': disk.total / GB,
+        'units': 'GB'
+    }
+
     return {
-        'cpu_load': [cpu_load, '%'],
-        'cpu_freq': [cpu_freq, 'MHz'],
-        'mem_available': [mem_available, 'MB'],
-        'disk_available': [disk_available, 'GB']
+        'cpu_freq': cpu_freq,
+        'cpu_load': cpu_load,
+        'memory': memory,
+        'disk': disk
     }
 
 
