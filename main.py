@@ -20,25 +20,25 @@ def get_stats():
         'units': '%'
     }
 
-    memory = psutil.virtual_memory()
-    memory = {
-        'current': (memory.total - memory.available) / MB,
-        'max': memory.total / MB,
+    memory_usage = psutil.virtual_memory()
+    memory_usage = {
+        'current': memory_usage.used / MB,
+        'max': memory_usage.total / MB,
         'units': 'MB'
     }
 
-    disk = psutil.disk_usage('/')
-    disk = {
-        'current': disk.used / GB,
-        'max': disk.total / GB,
+    disk_usage = psutil.disk_usage('/')
+    disk_usage = {
+        'current': disk_usage.used / GB,
+        'max': disk_usage.total / GB,
         'units': 'GB'
     }
 
     return {
         'cpu_freq': cpu_freq,
         'cpu_load': cpu_load,
-        'memory': memory,
-        'disk': disk
+        'memory_usage': memory_usage,
+        'disk_usage': disk_usage
     }
 
 
