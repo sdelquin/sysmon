@@ -20,10 +20,10 @@ def get_stats():
         'units': '%'
     }
 
-    memory_usage = psutil.virtual_memory()
-    memory_usage = {
-        'current': memory_usage.used / MB,
-        'max': memory_usage.total / MB,
+    mem_usage = psutil.virtual_memory()
+    mem_usage = {
+        'current': mem_usage.used / MB,
+        'max': mem_usage.total / MB,
         'units': 'MB'
     }
 
@@ -37,7 +37,7 @@ def get_stats():
     return {
         'cpu_freq': cpu_freq,
         'cpu_load': cpu_load,
-        'memory_usage': memory_usage,
+        'mem_usage': mem_usage,
         'disk_usage': disk_usage
     }
 
