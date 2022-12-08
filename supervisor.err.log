@@ -1,0 +1,4 @@
+[2022-12-07 17:47:37 +0000] [57452] [INFO] Starting gunicorn 20.1.0
+[2022-12-07 17:47:37 +0000] [57452] [INFO] Listening at: unix:/tmp/sysmon.sock (57452)
+[2022-12-07 17:47:37 +0000] [57452] [INFO] Using worker: sync
+[2022-12-07 17:47:37 +0000] [57464] [INFO] Booting worker with pid: 57464
