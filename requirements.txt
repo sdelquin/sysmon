@@ -1,2 +1,3 @@
 hug
 psutil
+setuptools

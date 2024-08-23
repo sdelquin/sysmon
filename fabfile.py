@@ -1,12 +1,12 @@
-from fabric.api import env, local, cd, run, prefix
+from fabric.api import cd, env, local, prefix, run
 
 env.hosts = ['sdelquin.me']
 
 
 def deploy():
     local('git push')
-    with prefix('source ~/.pyenv/versions/sysmon/bin/activate'):
-        with cd('~/code/sysmon'):
+    with cd('~/code/sysmon'):
+        with prefix('source .venv/bin/activate'):
             run('git pull')
             run('pip install -r requirements.txt')
             run('supervisorctl restart sysmon')
